@@ -35,7 +35,7 @@ function ShopContent() {
   }, [searchQuery]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const itemsPerPage = 6;
   const { addItem } = useCart();
 
   const handleAddToCart = (product: Product) => {

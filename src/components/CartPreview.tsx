@@ -45,7 +45,7 @@ export default function CartPreview() {
               <p className="text-gray-500 text-center py-4">Votre panier est vide</p>
             ) : (
               <>
-                <div className="space-y-4 mb-4">
+                <div className="space-y-4 mb-4 max-h-[50vh] sm:max-h-[40vh] overflow-y-auto pr-1">
                   {items.map((item) => (
                     <div key={item.id} className="flex items-center space-x-4 py-2 border-b border-gray-100">
                       <Link href={`/shop/${item.id}`} className="flex-shrink-0">

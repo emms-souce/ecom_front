@@ -80,9 +80,9 @@ export default function Navigation({ searchQuery, setSearchQuery, setIsSidebarOp
             {/* Mobile Search Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-600 hover:text-blue-600"
+              className="md:hidden text-gray-600 hover:text-blue-600 p-2"
             >
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
@@ -97,7 +97,7 @@ export default function Navigation({ searchQuery, setSearchQuery, setIsSidebarOp
 
         {/* Mobile Navigation Menu */}
         <div 
-          className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out md:hidden ${
+          className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out md:hidden z-30 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
           onClick={() => setIsMenuOpen(false)}

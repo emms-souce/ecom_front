@@ -64,13 +64,15 @@ function ShopContent() {
     <div className="max-w-[1400px] mx-auto">
       <ShopBanner />
 
-      <div className="flex items-center space-x-4 my-8 px-4">
-        <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">Gadget</button>
-        <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">Appliances</button>
-        <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">Refrigerators</button>
-        <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">Others</button>
-        <div className="flex-1 min-w-[20px]"></div>
-        <button className="text-xs sm:text-sm text-gray-600 hover:text-gray-800">See all</button>
+      <div className="my-8 px-4">
+        <div className="flex items-center overflow-x-auto pb-2 hide-scrollbar">
+          <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap mr-2">Gadget</button>
+          <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap mr-2">Appliances</button>
+          <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap mr-2">Refrigerators</button>
+          <button className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap mr-2">Others</button>
+          <div className="flex-1 min-w-[20px]"></div>
+          <button className="text-xs sm:text-sm text-gray-600 hover:text-gray-800 whitespace-nowrap">See all</button>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
@@ -80,7 +82,7 @@ function ShopContent() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 px-2 sm:px-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 px-4 sm:px-6"
         >
           {currentItems.map((product, index) => (
             <motion.div
@@ -153,30 +155,32 @@ function ShopContent() {
       </AnimatePresence>
 
       {/* Pagination */}
-      <div className="mt-8 flex justify-center items-center space-x-2">
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-3 py-1 rounded-md bg-gray-100 text-gray-600 disabled:opacity-50"
-        >
-          ←
-        </button>
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+      <div className="mt-8 mb-6 flex justify-center items-center">
+        <div className="flex flex-wrap justify-center gap-2">
           <button
-            key={number}
-            onClick={() => paginate(number)}
-            className={`px-3 py-1 rounded-md ${currentPage === number ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'}`}
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-3 py-2 rounded-md bg-gray-100 text-gray-600 disabled:opacity-50 min-w-[40px] flex items-center justify-center"
           >
-            {number}
+            ←
           </button>
-        ))}
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 rounded-md bg-gray-100 text-gray-600 disabled:opacity-50"
-        >
-          →
-        </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={`px-3 py-2 rounded-md min-w-[40px] flex items-center justify-center ${currentPage === number ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'}`}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-3 py-2 rounded-md bg-gray-100 text-gray-600 disabled:opacity-50 min-w-[40px] flex items-center justify-center"
+          >
+            →
+          </button>
+        </div>
       </div>
     </div>
   );

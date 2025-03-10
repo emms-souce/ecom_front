@@ -8,7 +8,7 @@ interface SidebarProps {
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>
-      <aside className={`fixed top-16 bottom-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition duration-200 ease-in-out z-10 w-64 bg-white shadow-md overflow-y-auto`}>
+      <aside className={`fixed top-16 bottom-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition duration-200 ease-in-out z-30 w-64 bg-white shadow-md overflow-y-auto`}>
         <div className="p-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Categories</h2>
           <nav className="space-y-2">
@@ -52,7 +52,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Overlay for mobile sidebar */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-0"
+          className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-20"
           onClick={onClose}
         ></div>
       )}

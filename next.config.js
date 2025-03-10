@@ -2,12 +2,14 @@
 const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
-    loader: 'custom',
-    loaderFile: './image-loader.js',
+    loader: 'default',
+    // Remove custom loader to use Next.js default image optimization
+    // which works better with Netlify
   },
   output: 'standalone',
+  // Allow Netlify Next.js plugin to handle the build process
   env: {
-    NETLIFY_NEXT_PLUGIN_SKIP: 'true'
+    NETLIFY_NEXT_PLUGIN_SKIP: 'false'
   }
 };
 

@@ -38,7 +38,7 @@ export default function CartPreview() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl z-50 max-h-[80vh] overflow-auto">
+        <div className="fixed sm:absolute right-0 sm:right-0 top-16 sm:top-auto sm:mt-2 w-full sm:w-80 bg-white rounded-lg shadow-xl z-50 max-h-[calc(100vh-4rem)] sm:max-h-[80vh] overflow-auto">
           <div className="p-4">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Panier</h3>
             {items.length === 0 ? (
@@ -47,11 +47,11 @@ export default function CartPreview() {
               <>
                 <div className="space-y-4 mb-4">
                   {items.map((item) => (
-                    <div key={item.id}  className="flex items-center space-x-4 py-2 border-b border-gray-100">
+                    <div key={item.id} className="flex items-center space-x-4 py-2 border-b border-gray-100">
                       <Link href={`/shop/${item.id}`} className="flex-shrink-0">
                         <div className="relative h-16 w-16">
                           <Image
-                           onClick={()=>setIsOpen(false)}
+                            onClick={() => setIsOpen(false)}
                             src={item.image}
                             alt={item.name}
                             layout="fill"
@@ -60,15 +60,15 @@ export default function CartPreview() {
                           />
                         </div>
                       </Link>
-                      <div className="flex-1">
-                        <Link href={`/shop/${item.id}`} onClick={()=>setIsOpen(false)}>
-                          <h4 className="text-sm font-medium text-gray-900 hover:text-blue-600">{item.name}</h4>
+                      <div className="flex-1 min-w-0">
+                        <Link href={`/shop/${item.id}`} onClick={() => setIsOpen(false)}>
+                          <h4 className="text-sm font-medium text-gray-900 hover:text-blue-600 truncate">{item.name}</h4>
                         </Link>
                         <p className="text-sm text-gray-500">{item.price.toFixed(2)} €</p>
                         <div className="flex items-center mt-1">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="text-gray-500 hover:text-blue-600"
+                            className="p-1 text-gray-500 hover:text-blue-600"
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
@@ -77,7 +77,7 @@ export default function CartPreview() {
                           <span className="mx-2 text-sm">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="text-gray-500 hover:text-blue-600"
+                            className="p-1 text-gray-500 hover:text-blue-600"
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -87,7 +87,7 @@ export default function CartPreview() {
                       </div>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-red-500 hover:text-red-600"
+                        className="p-1 text-red-500 hover:text-red-600"
                       >
                         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />

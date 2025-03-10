@@ -96,30 +96,92 @@ export default function Navigation({ searchQuery, setSearchQuery, setIsSidebarOp
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-          {/* Mobile Search Bar */}
-          <div className="px-2 pt-2 pb-3">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Rechercher des produits..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
-              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-500">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
+        <div 
+          className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out md:hidden ${
+            isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <div 
+            className={`fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+              isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Mobile Search Bar */}
+            <div className="p-4 border-b border-gray-200">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Rechercher des produits..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                />
+                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-500">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-          <div className={`px-2 pt-2 pb-3 space-y-1 ${quicksand.className}`}>
-            <Link href="/shop" className="block px-3 py-2 rounded-md font-medium ${isActive('/shop') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">Shop</Link>
-            <Link href="/shop/orders" className="block px-3 py-2 rounded-md font-medium ${isActive('/shop/orders') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">Mes Commandes</Link>
-            <Link href="/categories" className="block px-3 py-2 rounded-md font-medium ${isActive('/categories') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">Categories</Link>
-            <Link href="/about" className="block px-3 py-2 rounded-md font-medium ${isActive('/about') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">About</Link>
-            <Link href="/contact" className="block px-3 py-2 rounded-md font-medium ${isActive('/contact') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">Contact</Link>
+            <div className={`p-4 space-y-2 ${quicksand.className}`}>
+              <Link 
+                href="/shop" 
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive('/shop') 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Shop
+              </Link>
+              <Link 
+                href="/shop/orders" 
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive('/shop/orders') 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Mes Commandes
+              </Link>
+              <Link 
+                href="/categories" 
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive('/categories') 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Categories
+              </Link>
+              <Link 
+                href="/about" 
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive('/about') 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                href="/contact" 
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive('/contact') 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
           </div>
         </div>
       </div>
